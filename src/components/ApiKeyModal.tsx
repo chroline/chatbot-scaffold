@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { Button, FormControl, Input, Link, Modal, ModalDialog, Stack, Typography } from "@mui/joy";
 import { Transition } from "react-transition-group";
 
-import useStore from "~/core/store";
+import { useApiKeyStore } from "~/core/store";
 
 export const ApiKeyModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { apiKey, setApiKey } = useStore();
+  const { apiKey, setApiKey } = useApiKeyStore();
 
   useEffect(() => {
     if (!apiKey) setIsOpen(true);
