@@ -58,7 +58,7 @@ export const ChatMessage = ({ from, messages$ }: { from: "user" | "bot"; message
           </Typography>
         </ChatMessageItem>
       )}
-      {from === "bot" && !isClosed && (
+      {from === "bot" && !isClosed && !hasError && (
         <ChatMessageItem from={from} color={"neutral"} variant={"plain"}>
           <CircularProgress color="neutral" determinate={false} size="sm" />
         </ChatMessageItem>

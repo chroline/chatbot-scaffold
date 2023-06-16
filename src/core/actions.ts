@@ -29,7 +29,8 @@ export function askBot({
         newChat.messages$.next(value as string[]);
       },
       error: value => {
-        newChat.messages$.error(value);
+        newChat.messages$.error("");
+        newChat.messages$.complete();
       },
       complete: () => {
         newChat.messages$.complete();

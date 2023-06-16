@@ -24,7 +24,7 @@ export function queryBot({
 
   webSocket$
     .pipe(
-      map(jsonString => jsonString as { type: "sources" | "response"; data: string | string[] }),
+      map(jsonString => jsonString as { type: "sources" | "response" | "error"; data: string | string[] }),
       filter(value => {
         if (value.type === "sources") {
           sources = value.data as string[];
@@ -39,12 +39,18 @@ export function queryBot({
     )
     .subscribe({
       next: value => {
+        if (value.type === "error") {
+          data$.error("");
+          data$.complete();
+          return;
+        }
         const newMessages = [sources.length === 0 && noSourcesInfoCopy, value.data as string];
         messages = newMessages.filter(v => v !== false) as string[];
         data$.next(messages);
       },
       error: error => {
         data$.error(error);
+        data$.complete();
       },
       complete: () => {
         data$.next(messages[messages.length - 1]);
@@ -54,7 +60,7 @@ export function queryBot({
     });
 
   webSocket$.next({
-    apiKey,
+    api_key: apiKey,
     query,
     history: [...history].slice(-2),
   });
