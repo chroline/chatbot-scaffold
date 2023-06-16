@@ -64,8 +64,7 @@ export const ApiKeyModal = () => {
                 event.preventDefault();
                 const formData = new FormData(event.target as HTMLFormElement);
                 const apiKey = formData.get("api-key");
-                console.log(apiKey);
-                setApiKey(apiKey);
+                setApiKey((apiKey || "").toString());
                 setIsOpen(false);
               }}
             >
