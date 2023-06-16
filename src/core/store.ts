@@ -4,19 +4,13 @@ import Chat from "~/util/models/Chat";
 
 import { askBot } from "./actions";
 
-interface Store {
-  apiKey: string | null;
+interface ChatStore {
   chats: Chat[];
   sendChat: (message: string) => void;
   clearChat: () => void;
 }
 
-const useStore = create<Store>((set, get) => ({
-  apiKey: localStorage.getItem("apiKey"),
-  setApiKey(apiKey: string) {
-    localStorage.setItem("apiKey", apiKey);
-    set(state => ({ ...state, apiKey }));
-  },
+export const useChatStore = create<ChatStore>((set, get) => ({
   chats: [],
   sendChat(message: string) {
     const newChat = new Chat({ from: "user", message });
@@ -25,7 +19,7 @@ const useStore = create<Store>((set, get) => ({
         ...state.chats,
         newChat,
         askBot({
-          apiKey: get().apiKey as string,
+          apiKey: useApiKeyStore.getState().apiKey as string,
           query: message,
           history: get().chats.map(chat => ({ from: chat.from, msg: chat.mainMessage || "" })),
         }),
@@ -37,4 +31,15 @@ const useStore = create<Store>((set, get) => ({
   },
 }));
 
-export default useStore;
+interface ApiKeyStore {
+  apiKey: string | null;
+  setApiKey: (apiKey: string) => void;
+}
+
+export const useApiKeyStore = create<ApiKeyStore>(set => ({
+  apiKey: localStorage.getItem("apiKey"),
+  setApiKey(apiKey: string) {
+    localStorage.setItem("apiKey", apiKey);
+    set(state => ({ ...state, apiKey }));
+  },
+}));

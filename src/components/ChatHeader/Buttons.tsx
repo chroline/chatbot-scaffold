@@ -1,10 +1,10 @@
 import { DeleteSweepRounded } from "@mui/icons-material";
 import { Box, Button, IconButton } from "@mui/joy";
 
-import useStore from "~/core/store";
+import { useChatStore } from "~/core/store";
 
 export const ChatHeaderButtons = () => {
-  const { clearChat } = useStore();
+  const { clearChat } = useChatStore();
 
   return (
     <>

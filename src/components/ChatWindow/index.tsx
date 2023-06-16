@@ -1,6 +1,6 @@
 import { Box } from "@mui/joy";
 
-import useStore from "~/core/store";
+import { useChatStore } from "~/core/store";
 
 import { ChatBox } from "../ChatBox";
 import { ChatMessage } from "../ChatMessage";
@@ -9,7 +9,7 @@ import { ChatWindowMessagesContainer } from "./MessagesContainer";
 import { ChatWindowWrapper } from "./Wrapper";
 
 export const ChatWindow = () => {
-  const { chats } = useStore();
+  const { chats } = useChatStore();
 
   return (
     <ChatWindowWrapper>

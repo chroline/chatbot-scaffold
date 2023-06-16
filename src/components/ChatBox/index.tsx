@@ -1,4 +1,4 @@
-import useStore from "~/core/store";
+import { useChatStore } from "~/core/store";
 import useIsSubscriptionClosed from "~/util/hooks/useObservableIsComplete";
 
 import { ChatBoxContainer } from "./Container";
@@ -6,7 +6,7 @@ import { ChatBoxInput } from "./Input";
 import { ChatBoxSendButton } from "./SendButton";
 
 export const ChatBox = () => {
-  const store = useStore();
+  const store = useChatStore();
 
   const mostRecentChat = [...store.chats].pop();
   const isMostRecentChatClosed = useIsSubscriptionClosed(mostRecentChat?.messages$);
