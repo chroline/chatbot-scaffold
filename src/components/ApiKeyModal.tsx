@@ -54,7 +54,7 @@ export const ApiKeyModal = () => {
               Enter your OpenAI API key
             </Typography>
             <Typography id="api-key-modal-description" textColor="text.tertiary">
-              Grab yours as{" "}
+              Grab yours at{" "}
               <Link href="https://platform.openai.com/account/api-keys">
                 https://platform.openai.com/account/api-keys
               </Link>
