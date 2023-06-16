@@ -1,4 +1,4 @@
-export const QUERY_URL = `ws${location.protocol === "https:" ? "s" : ""}://nutrition-chatbot-server.colegaw.in/ws`;
+export const QUERY_URL = `ws${location.protocol === "https:" ? "s" : ""}://chatbot-server-q4e4awr4aq-uc.a.run.app/ws`;
 
 export const NO_SOURCES_INFO_COPIES = [
   "Hmm, I couldn't find any nutrition sources to help with this query, but I'll try to help as best as I can:",
