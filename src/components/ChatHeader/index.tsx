@@ -11,7 +11,7 @@ export const ChatHeader = () => {
           Chatting with...
         </Typography>
         <Typography component="h1" level="h4" fontWeight="600">
-          Chatbot Scaffold
+          WebMD Nutrition
         </Typography>
       </Box>
       <ChatHeaderButtons />

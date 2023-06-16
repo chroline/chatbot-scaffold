@@ -19,7 +19,7 @@ export const Navbar = () => {
           </Button>
         </Box>
         <NavbarTitle>
-          <Typography fontWeight={"bold"}>Chatbot Scaffold</Typography>
+          <Typography fontWeight={"bold"}>WebMD Nutrition Chatbot</Typography>
         </NavbarTitle>
         <Box>
           <ColorModeToggle />
